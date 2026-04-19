@@ -1,1 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RuralBites | Roosevelt School District 66 | Summer 2026</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#0B7A43;
+      --dark-navy:#062B3A;
+      --gold:#F2D15B;
+      --white:#FFFFFF;
+      --light-bg:#F5F5F2;
+      --body-text:#3A3A3A;
+      --muted:#5E5E5E;
+      --border:#DDE6E0;
+      --shadow:0 12px 30px rgba(6,43,58,.08);
+      --radius:22px;
+      --max:1120px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--light-bg);
+      color:var(--body-text);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .wrap{
+      width:min(100% - 32px, var(--max));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:var(--white);
+      border-bottom:1px solid rgba(6,43,58,.08);
+      position:sticky;
+      top:0;
+      z-index:20;
+      box-shadow:0 4px 18px rgba(6,43,58,.04);
+    }
+
+    .topbar-inner{
+      width:min(100% - 32px, var(--max));
+      margin:0 auto;
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand img{
+      height:58px;
+      width:auto;
+      object-fit:contain;
+    }
+
+    .brand-meta{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .brand-meta .eyebrow{
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:700;
+      color:var(--green);
+    }
+
+    .brand-meta .sub{
+      font-size:.95rem;
+      color:var(--dark-navy);
+      font-weight:600;
+    }
+
+    .hero{
+      padding:82px 0 58px;
+      background:
+        linear-gradient(rgba(6,43,58,.55), rgba(6,43,58,.55)),
+        url('https://rtqobxqqxprhfgbvvniq.supabase.co/storage/v1/object/public/blog-images/NM%20Staff.png') center/cover no-repeat;
+      color:var(--white);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-70px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:rgba(242,209,91,.10);
+    }
+
+    .hero-inner{
+      max-width:900px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-kicker{
+      display:inline-block;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(2.1rem, 5vw, 4.1rem);
+      line-height:1.06;
+      font-weight:800;
+      letter-spacing:-.03em;
+      margin-bottom:18px;
+      max-width:860px;
+    }
+
+    .hero p{
+      font-size:1.05rem;
+      color:rgba(255,255,255,.94);
+      max-width:820px;
+      font-weight:400;
+      margin-bottom:14px;
+    }
+
+    .section{
+      padding:68px 0;
+    }
+
+    .section.white{
+      background:var(--white);
+    }
+
+    .section.light{
+      background:var(--light-bg);
+    }
+
+    .label{
+      display:inline-block;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:700;
+      color:var(--green);
+      margin-bottom:16px;
+    }
+
+    h2{
+      font-size:clamp(1.7rem, 3vw, 2.5rem);
+      line-height:1.12;
+      font-weight:800;
+      letter-spacing:-.02em;
+      color:var(--dark-navy);
+      margin-bottom:14px;
+      max-width:860px;
+    }
+
+    .lead{
+      font-size:1.02rem;
+      color:var(--muted);
+      max-width:820px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:30px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:30px;
+    }
+
+    .card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:28px 24px;
+      box-shadow:var(--shadow);
+      height:100%;
+    }
+
+    .icon{
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      background:rgba(11,122,67,.10);
+      color:var(--green);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    .card h3{
+      font-size:1rem;
+      line-height:1.3;
+      font-weight:700;
+      color:var(--dark-navy);
+      margin-bottom:10px;
+    }
+
+    .card p{
+      font-size:.97rem;
+      color:var(--muted);
+    }
+
+    .spotlight{
+      margin-top:28px;
+      background:var(--dark-navy);
+      color:var(--white);
+      border-radius:26px;
+      padding:34px 30px;
+      box-shadow:var(--shadow);
+    }
+
+    .spotlight h3{
+      font-size:1.12rem;
+      font-weight:700;
+      color:var(--gold);
+      margin-bottom:10px;
+    }
+
+    .spotlight p{
+      color:rgba(255,255,255,.92);
+      max-width:860px;
+    }
+
+    .list-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:30px 24px;
+      box-shadow:var(--shadow);
+      margin-top:26px;
+    }
+
+    .list-card h3{
+      font-size:1rem;
+      font-weight:700;
+      color:var(--dark-navy);
+      margin-bottom:14px;
+    }
+
+    .list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+
+    .list li{
+      position:relative;
+      padding-left:24px;
+      color:var(--muted);
+      font-size:.97rem;
+    }
+
+    .list li::before{
+      content:"✓";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--green);
+      font-weight:700;
+    }
+
+    .table-wrap{
+      margin-top:30px;
+      overflow-x:auto;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background:var(--white);
+      box-shadow:var(--shadow);
+    }
+
+    .program-table{
+      width:100%;
+      min-width:760px;
+      border-collapse:collapse;
+    }
+
+    .program-table thead th{
+      background:var(--dark-navy);
+      padding:18px 20px;
+      font-size:.9rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      text-align:left;
+      white-space:nowrap;
+    }
+
+    .program-table thead th:first-child{
+      color:var(--white);
+    }
+
+    .program-table thead th:not(:first-child){
+      color:var(--gold);
+      text-align:center;
+    }
+
+    .program-table tbody td{
+      padding:20px;
+      border-bottom:1px solid var(--border);
+      font-size:1rem;
+      color:var(--body-text);
+      background:var(--white);
+    }
+
+    .program-table tbody tr:nth-child(2){
+      background:#FAFAF8;
+    }
+
+    .program-table tbody tr:nth-child(2) td{
+      background:#FAFAF8;
+    }
+
+    .program-table tbody tr:last-child td{
+      border-bottom:none;
+    }
+
+    .program-table tbody td:first-child{
+      font-weight:600;
+      color:var(--dark-navy);
+      width:28%;
+    }
+
+    .program-table tbody td:not(:first-child){
+      text-align:center;
+      font-weight:700;
+      color:#222222;
+    }
+
+    .table-note{
+      margin-top:16px;
+      font-size:.92rem;
+      color:#6E6E6E;
+      font-style:italic;
+      line-height:1.7;
+    }
+
+    .table-note strong{
+      color:var(--green);
+      font-style:normal;
+    }
+
+    .footer{
+      padding:28px 0 44px;
+      background:var(--light-bg);
+      border-top:1px solid rgba(6,43,58,.08);
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer small{
+      color:#6E6E6E;
+      font-size:.84rem;
+    }
+
+    .contact{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .contact a{
+      color:var(--dark-navy);
+      text-decoration:none;
+      font-weight:600;
+      font-size:.94rem;
+    }
+
+    .contact a:hover{
+      text-decoration:underline;
+    }
+
+    .cta{
+      display:inline-block;
+      margin-top:12px;
+      padding:14px 22px;
+      border-radius:999px;
+      background:var(--green);
+      color:var(--white);
+      text-decoration:none;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .cta:hover{
+      background:#096636;
+      transform:translateY(-1px);
+    }
+
+    @media (max-width: 900px){
+      .grid-2,
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar-inner{
+        align-items:flex-start;
+        min-height:auto;
+      }
+
+      .brand{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:10px;
+      }
+
+      .brand img{
+        height:52px;
+      }
+
+      .hero{
+        padding:62px 0 46px;
+      }
+
+      .section{
+        padding:52px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="https://rtqobxqqxprhfgbvvniq.supabase.co/storage/v1/object/public/blog-images/The%20infrastructure%20behind%20every%20meal%20delivered..png" alt="RuralBites logo">
+        <div class="brand-meta">
+          <span class="eyebrow">RuralBites</span>
+          <span class="sub">Roosevelt School District 66 | Summer 2026</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-kicker">Follow up brief</div>
+      <h1>You already run SFSP. This builds on that.</h1>
+      <p>
+        During the school year, families rely on these meals. In the summer, access becomes the challenge.
+      </p>
+      <p>
+        You already have the experience, approvals, and relationships in place.
+      </p>
+      <p>
+        Rural non-congregate adds a layer of coordination — delivery, enrollment, and documentation all need to work together throughout the season. That’s where programs tend to get complicated.
+      </p>
+      <p>
+        RuralBites is here to support that coordination.
+      </p>
+      <p>
+        We work alongside your team to bring those pieces into one flow so the program can run consistently without adding strain on staff.
+      </p>
+      <p>
+        Meals still come from your approved vendors. Your team stays in control. This model simply extends how you reach families who can’t consistently access a site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap">
+      <div class="label">What RuralBites helps manage</div>
+      <h2>Built to support the practical side of increasing summer meal access</h2>
+      <p class="lead">
+        RuralBites is designed to help sponsors and communities support families who need summer meals at home, without asking teams to add staff or build brand new systems from scratch.
+      </p>
+      <p class="lead" style="margin-top:14px;">
+        This model is designed to align with USDA non-congregate guidance and support the documentation sponsors need to manage the program with confidence.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">📝</div>
+          <h3>Flexible family sign up</h3>
+          <p>
+            Families can sign up in the way that works best for them — online or through a mobile friendly experience — making it easier to participate and easier for your team to manage.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚚</div>
+          <h3>Meal delivery support</h3>
+          <p>
+            Help coordinate getting meals from preparation sites to families across your community in a way that is organized and manageable.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📂</div>
+          <h3>Service records and reporting support</h3>
+          <p>
+            Keep meal service and delivery records organized so reporting and oversight feel clear and manageable throughout the summer.
+          </p>
+        </div>
+      </div>
+
+      <div class="spotlight">
+        <h3>Designed to support your team</h3>
+        <p>
+          This is not about adding complexity. It is about making delivery and service support easier to manage within the structure you already have.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="label">What this could look like for Roosevelt</div>
+      <h2>A model designed around your geography and your community</h2>
+      <p class="lead">
+        This is where RuralBites becomes practical. Not as an abstract platform, but as a support system shaped around how Roosevelt School District 66 could increase access for families during the summer in a way that feels manageable and community centered.
+      </p>
+
+      <div class="list-card">
+        <h3>For Roosevelt School District 66, this could mean</h3>
+        <ul class="list">
+          <li>Household level delivery support across the district</li>
+          <li>Easier ways for families to sign up and participate</li>
+          <li>Clearer service records and reporting support</li>
+          <li>A more manageable path to reaching families beyond a single site</li>
+          <li>A system that supports your team without asking you to rebuild from scratch</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap">
+      <div class="label">When this works well</div>
+      <h2>This tends to work well when</h2>
+
+      <div class="list-card">
+        <ul class="list">
+          <li>Families are spread out across distance</li>
+          <li>Some households cannot consistently get to a site</li>
+          <li>Your team wants to expand access without expanding staffing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="label">What this looks like week to week</div>
+      <h2>How the program runs week to week</h2>
+      <p class="lead">
+        This is meant to fit within your program — not create a second job for your staff. The goal is to make weekly operations feel clear, repeatable, and manageable.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>Families sign up</h3>
+          <p>Families enroll and are organized by household.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>Meals are coordinated</h3>
+          <p>Meals are coordinated across vendors and delivery.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>Service is recorded</h3>
+          <p>Service is recorded as the program runs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap">
+      <div class="label">Simple example</div>
+      <h2>What this could look like in practice</h2>
+      <p class="lead">
+        This is what it can look like for a family in your community.
+      </p>
+
+      <div class="list-card">
+        <h3>A practical example</h3>
+        <ul class="list">
+          <li>A family who normally would not make it to a site signs up using a phone or computer</li>
+          <li>That household is included in a delivery plan for its area</li>
+          <li>Meals are brought closer to where they live through a coordinated summer model</li>
+          <li>Service is recorded in a way that supports program requirements</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="label">What this could unlock</div>
+      <h2>The impact of extending reach</h2>
+      <p class="lead">
+        The value is not just operational. It is what becomes possible for families and for your community when summer meal access improves.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">👨‍👩‍👧</div>
+          <h3>More families reached at home</h3>
+          <p>
+            Families who are currently outside site access can receive meals more consistently throughout the summer.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>More consistent access for children</h3>
+          <p>
+            Reliable access helps children stay connected to the support your program provides throughout the summer.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌍</div>
+          <h3>Stronger connection to families across your community</h3>
+          <p>
+            More families across your community can be served consistently throughout the summer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap">
+      <div class="label">How this works</div>
+      <h2>You lead. We make it work.</h2>
+      <p class="lead">
+        Roosevelt School District 66 stays in control of the program. RuralBites supports the coordination so your team can focus on serving families without carrying every operational detail alone.
+      </p>
+      <p class="lead" style="margin-top:14px;">
+        This is about making sure families who depend on your program during the school year can still be reached in the summer.
+      </p>
+
+      <div class="grid-2">
+        <div class="list-card">
+          <h3>RuralBites handles</h3>
+          <ul class="list">
+            <li>Coordinating delivery and working with vendors across your service area</li>
+            <li>Supporting family enrollment so participation stays strong all season</li>
+            <li>Keeping records organized as the program runs</li>
+            <li>Working alongside your program from planning through final claim</li>
+          </ul>
+        </div>
+
+        <div class="list-card">
+          <h3>Roosevelt School District 66 leads</h3>
+          <ul class="list">
+            <li>Program ownership and all final decisions</li>
+            <li>Claims submission to your state agency</li>
+            <li>Vendor approvals and contract authority</li>
+            <li>Community relationships and program direction</li>
+            <li>Full authority as the approved SFSP sponsor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="spotlight">
+        <h3>We start small</h3>
+        <p>
+          Every new delivery program can begin with a focused onboarding phase — a smaller group of families over the first one to two weeks — before expanding. That gives your team time to get comfortable, confirm everything is working, and adjust if needed before moving to a larger scale.
+        </p>
+        <p style="margin-top:12px;color:rgba(255,255,255,.82);">
+          You do not have to commit to full scale on day one to see what this could look like in practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="label">What your program generates</div>
+      <h2 style="color:var(--dark-navy);">Summer 2026 at three participation levels</h2>
+      <p class="lead">
+        Roosevelt School District 66 serves approximately 7,000 students district-wide. Here is what summer operations could look like at three participation levels.
+      </p>
+
+      <div class="table-wrap">
+        <table class="program-table">
+          <thead>
+            <tr>
+              <th>Program Scale</th>
+              <th>1,000 Children</th>
+              <th>1,500 Children</th>
+              <th>3,000 Children</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Weekly reimbursement</td>
+              <td>$60,533</td>
+              <td>$90,799</td>
+              <td>$181,598</td>
+            </tr>
+            <tr>
+              <td>10-week reimbursement</td>
+              <td>$605,325</td>
+              <td>$907,988</td>
+              <td>$1,815,975</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-note">
+        <strong>Note:</strong> RuralBites is structured to align with USDA reimbursement, so program costs are covered within the funding available. Pricing is based on participation and finalized with your team. Estimates are based on 2026 USDA rates and may vary based on enrollment and state agency confirmation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section white">
+    <div class="wrap">
+      <div class="label">One more thing built into the partnership</div>
+      <h2>Coordinated Purchasing Across the RuralBites Network</h2>
+      <p class="lead">
+        Roosevelt School District 66 should not have to manage procurement pressure alone while also trying to expand access for families.
+      </p>
+
+      <div class="spotlight">
+        <h3>Coordinated Purchasing Across the RuralBites Network</h3>
+        <p>
+          As a RuralBites partner, Roosevelt School District 66 has access to coordinated purchasing across a broader network of programs, structured in alignment with federal and state procurement requirements.
+        </p>
+        <p style="margin-top:12px;color:rgba(255,255,255,.92);">
+          This helps maintain competitive pricing and reduces the burden of managing procurement independently.
+        </p>
+        <p style="margin-top:12px;color:rgba(255,255,255,.82);font-size:.94rem;">
+          This is built into the partnership — not an additional service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="wrap">
+      <div class="label">Next step</div>
+      <h2>Great connecting with your team</h2>
+
+      <p class="lead" style="margin-bottom:14px;">
+        It was great connecting with your team and learning more about the work you’re already doing.
+      </p>
+
+      <p class="lead">
+        As you think through next steps, we are here if anything would be helpful. Happy to connect anytime.
+      </p>
+
+      <p class="lead" style="margin-top:14px;">
+        If it helps, we can also walk through what a small starting point could look like for Roosevelt.
+      </p>
+
+      <a class="cta" href="mailto:dom@rural-bites.com">Reach out anytime</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <small>© 2026 RuralBites™ · rural-bites.com</small>
+      <div class="contact">
+        <a href="https://www.rural-bites.com" target="_blank" rel="noopener">rural-bites.com</a>
+        <a href="mailto:dom@rural-bites.com">dom@rural-bites.com</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
